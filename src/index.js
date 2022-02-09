@@ -38,7 +38,9 @@ const MORSE_TABLE = {
 };
 
 function decode(expr) {
-    // write your solution here
+    let splitArr = expr.match(/.{10}/g);
+    let toMorse = splitArr.map(i => i.replace(/0{2,}/, '').replace(/10/g, '.').replace(/11/g, '-').replace(/\*/g, ' '));
+    return toMorse.map(i => i == 0 ? ' ' : MORSE_TABLE[i]).join('');
 }
 
 module.exports = {
